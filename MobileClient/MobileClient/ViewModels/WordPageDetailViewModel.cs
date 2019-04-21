@@ -1,4 +1,5 @@
-﻿using MobileClient.Infrastructure;
+﻿using MobileClient.Abstractions;
+using MobileClient.Infrastructure;
 using MobileClient.Models;
 using Prism.Commands;
 using Prism.Navigation;
@@ -14,6 +15,8 @@ namespace MobileClient.ViewModels
 {
     public class WordPageDetailViewModel : ViewModelBase
     {
+        readonly ITranslator _translator;
+
         #region Properties
 
         private IEnumerable<string> _languages;
@@ -56,10 +59,22 @@ namespace MobileClient.ViewModels
 
         public ICommand TranslateCommand { get; set; }
 
-        public WordPageDetailViewModel(INavigationService navigationService) : base(navigationService)
+        public WordPageDetailViewModel(INavigationService navigationService, ITranslator translator) : base(navigationService)
         {
+            _translator = translator;
+
             Languages = new[] { Constants.Ukrainian, Constants.English };
-            TranslateCommand = new DelegateCommand(async () => await TranslateTextAsync());
+
+            TranslateCommand = new DelegateCommand(async () => 
+            {
+                var toLanguage = LanguageToString.Substring(0, 2).ToLower();
+                var fromLanguage = LanguageFromString.Substring(0, 2).ToLower();
+
+                var result = await _translator.TranslateAsync(fromLanguage, toLanguage, Value);
+
+                Translation = $"Translation: {result}";
+            });
+
             SaveCommand = new DelegateCommand(async () => await SaveItemAsync());
         }
 
@@ -84,8 +99,6 @@ namespace MobileClient.ViewModels
                 LanguageFromString = word.LanguageFrom;
                 LanguageToString = word.LanguageTo;
             }
-
-
         }
 
         private async Task SaveItemAsync()
@@ -113,28 +126,7 @@ namespace MobileClient.ViewModels
             }
 
             await NavigationService.GoBackAsync(navParameters);
-        }
-
-        private async Task TranslateTextAsync()
-        {
-            var toLanguage = LanguageToString.Substring(0, 2).ToLower();
-            var fromLanguage = LanguageFromString.Substring(0,2).ToLower();
-
-            var url = String.Format("https://translate.googleapis.com/translate_a/single?ie=UTF-8&client=gtx&sl={0}&tl={1}&dt=t&q={2}", fromLanguage, toLanguage, HttpUtility.UrlEncode(Value, Encoding.UTF8));
-            var webClient = new HttpClient();
-            
-            var result = await webClient.GetStringAsync(url);
-           
-            try
-            {
-                result = result.Substring(4, result.IndexOf("\"", 4, StringComparison.Ordinal) - 4);
-                Translation = $"Translation: {result}";
-            }
-            catch (Exception ex)
-            {
-                Translation = "Error while translating.";
-            }
-        }
+        }        
 
         private long _id;
     }

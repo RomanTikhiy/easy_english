@@ -6,7 +6,7 @@
         <StackLayout>
             <Image  Margin="10" Source="{Binding CapturedImage}"></Image>
             <Button Margin="10" Command="{Binding TakePhotoCommand}" CornerRadius="5" Text="Take photo"></Button>
-            <Editor Margin="10" Text="{Binding TextResult}" VerticalOptions="Start"></Editor>
+            <Editor Margin="10" Text="{Binding TextResult}" VerticalOptions="FillAndExpand"></Editor>
             <Button Margin="10" Command="{Binding TranslateCommand}" CornerRadius="5" Text="Translate"></Button>
         </StackLayout>
     </ContentPage.Content>

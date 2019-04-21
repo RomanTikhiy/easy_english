@@ -1,4 +1,5 @@
-﻿using Plugin.Media;
+﻿using MobileClient.Views;
+using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Prism.Commands;
 using Prism.Navigation;
@@ -14,10 +15,11 @@ namespace MobileClient.ViewModels
 {
     public class CameraTranslateViewModel : ViewModelBase
     {
-        private readonly ITesseractApi _tesseractApi;
-        private readonly IDevice _device;
+        readonly ITesseractApi _tesseractApi;
+        readonly IDevice _device;
 
         public ICommand TakePhotoCommand { get; set; }
+        public ICommand TranslateCommand { get; set; }
 
         private ImageSource _imageSource;
         public ImageSource CapturedImage
@@ -39,7 +41,15 @@ namespace MobileClient.ViewModels
             _tesseractApi = Resolver.Resolve<ITesseractApi>();
 
             TakePhotoCommand = new DelegateCommand(async () => await TakePhotoAsync());
+            TranslateCommand = new DelegateCommand(async () => 
+            {
+                var parameters = new NavigationParameters();
+                parameters.Add("text", TextResult);
+
+                await NavigationService.NavigateAsync($"{nameof(TranslatePage)}", parameters);
+            });
         }
+
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
             base.OnNavigatedFrom(parameters);

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileClient.Views.TranslatePage">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions></Grid.RowDefinitions>
+                <Grid.RowDefinitions></Grid.RowDefinitions>
+                <Grid.RowDefinitions></Grid.RowDefinitions>
+                <Grid.RowDefinitions></Grid.RowDefinitions>
+
+                <Label FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="From:" Grid.Row="0" Grid.Column="0"></Label>
+                <Picker Grid.Column="1" Grid.Row="0" ItemsSource="{Binding Languages}" SelectedItem="{Binding LanguageFromString}"></Picker>
+
+                <Label FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="To:" Grid.Row="1" Grid.Column="0"></Label>
+                <Picker Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Languages}" SelectedItem="{Binding LanguageToString}"></Picker>
+
+                <Button Margin="45, 10, 45, 10" Grid.Row="2" Grid.ColumnSpan="2" Text="Translate" Command="{Binding TranslateCommand}" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White"></Button>
+
+            </Grid>
+            
+            <Label FontSize="Large" TextColor="Black" Text="{Binding Translation}" Grid.Row="3" Grid.ColumnSpan="2"></Label>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

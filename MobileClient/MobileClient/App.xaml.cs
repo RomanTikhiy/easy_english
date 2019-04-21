@@ -5,6 +5,8 @@ using MobileClient.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Tesseract;
+using MobileClient.Abstractions;
+using MobileClient.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MobileClient
@@ -29,6 +31,8 @@ namespace MobileClient
 
         protected override void RegisterTypes(IContainerRegistry container)
         {
+            container.Register<ITranslator, Translator>();
+
             container.RegisterForNavigation<NavigationPage>();
             container.RegisterForNavigation<MainPage, MainPageViewModel>();
             container.RegisterForNavigation<MyMasterDetailPage, MyMasterDetailPageViewModel>();
@@ -36,7 +40,8 @@ namespace MobileClient
             container.RegisterForNavigation<VocabularyPageDetail, VocabularyPageDetailViewModel>();
             container.RegisterForNavigation<WordPageDetail, WordPageDetailViewModel>();
             container.RegisterForNavigation<EditVocabularyPage, EditVocabularyViewModel>();
-            container.RegisterForNavigation<CameraTranslatePage, CameraTranslateViewModel>();            
+            container.RegisterForNavigation<CameraTranslatePage, CameraTranslateViewModel>();
+            container.RegisterForNavigation<TranslatePage, TranslatePageViewModel>();
         }
     }
 }
