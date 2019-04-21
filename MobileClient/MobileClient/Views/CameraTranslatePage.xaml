@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileClient.Views.CameraTranslatePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Image  Margin="10" Source="{Binding CapturedImage}"></Image>
+            <Button Margin="10" Command="{Binding TakePhotoCommand}" CornerRadius="5" Text="Take photo"></Button>
+            <Editor Margin="10" Text="{Binding TextResult}" VerticalOptions="Start"></Editor>
+            <Button Margin="10" Command="{Binding TranslateCommand}" CornerRadius="5" Text="Translate"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

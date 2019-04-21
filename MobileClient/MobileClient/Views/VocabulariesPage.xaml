@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileClient.Views.VocabulariesPage"
+             xmlns:fab="clr-namespace:SuaveControls.Views;assembly=SuaveControls.FloatingActionButton"            
+             Title="Vocabularies">
+    <ContentPage.Content>
+        <RelativeLayout>
+            <StackLayout Margin="10">
+                <ListView
+                      SelectedItem="{Binding SelectedVocabulary, Mode=TwoWay}"
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding Vocabularies}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout>
+                                        <Label Text="{Binding Name}" FontSize="Large" />
+                                        <Label Text="{Binding Description}" />
+                                        <Label Text="{Binding Count}" />
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <fab:FloatingActionButton 
+                Image="dark_plus1.png" WidthRequest="80" HeightRequest="85" ButtonColor="#90EE90" BorderColor="Black"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-80}"
+				RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-80}" >
+            </fab:FloatingActionButton>
+        </RelativeLayout>
+    </ContentPage.Content>
+</ContentPage>

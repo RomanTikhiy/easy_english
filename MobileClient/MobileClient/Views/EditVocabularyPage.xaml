@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileClient.Views.EditVocabularyPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions></Grid.RowDefinitions>
+                <Grid.RowDefinitions></Grid.RowDefinitions>
+
+                <Label Text="Name: " FontSize="Large"></Label>
+                <Editor Grid.Column="1"></Editor>
+
+                <Label Grid.Row="1" Text="Description: " FontSize="Large"></Label>
+                <Editor Grid.Column="1" Grid.Row="1"></Editor>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileClient.Views.WordPageDetail"
+             Title="Edit word item">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions></Grid.RowDefinitions>
+                <Grid.RowDefinitions></Grid.RowDefinitions>
+                <Grid.RowDefinitions></Grid.RowDefinitions>
+                <Grid.RowDefinitions></Grid.RowDefinitions>
+                <Grid.RowDefinitions></Grid.RowDefinitions>
+                <Grid.RowDefinitions></Grid.RowDefinitions>
+
+                <Label FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="Value:" Grid.Row="0" Grid.Column="0"></Label>
+                <Editor Grid.Row="0" Grid.Column="1" Text="{Binding Value}"></Editor>
+
+                <Label FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="From:" Grid.Row="1" Grid.Column="0"></Label>
+                <Picker Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Languages}" SelectedItem="{Binding LanguageFromString}"></Picker>
+
+                <Label FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" Text="To:" Grid.Row="2" Grid.Column="0"></Label>
+                <Picker Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Languages}" SelectedItem="{Binding LanguageToString}"></Picker>
+
+                <Label FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" Text="{Binding Translation}" Grid.Row="3" Grid.ColumnSpan="2"></Label>
+
+                <Button Margin="45, 10, 45, 10" Grid.Row="4" Grid.ColumnSpan="2" Text="Translate" Command="{Binding TranslateCommand}" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White"></Button>
+
+                <Button Margin="45, 10, 45, 10" Grid.Row="5" Grid.ColumnSpan="2" Text="Save" Command="{Binding SaveCommand}" CornerRadius="20" BackgroundColor="#20B2AA" TextColor="White"></Button>
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
