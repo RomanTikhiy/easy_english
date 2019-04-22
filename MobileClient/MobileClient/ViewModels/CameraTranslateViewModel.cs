@@ -40,6 +40,8 @@ namespace MobileClient.ViewModels
             _device = Resolver.Resolve<IDevice>();
             _tesseractApi = Resolver.Resolve<ITesseractApi>();
 
+            CapturedImage = ImageSource.FromFile("camera.gif");
+
             TakePhotoCommand = new DelegateCommand(async () => await TakePhotoAsync());
             TranslateCommand = new DelegateCommand(async () => 
             {
@@ -58,8 +60,6 @@ namespace MobileClient.ViewModels
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
-
-            CapturedImage = ImageSource.FromFile("photo_template.png");
         }
 
         async Task TakePhotoAsync()

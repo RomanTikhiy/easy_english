@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyEnglish.Server", "EasyEnglish.Server\EasyEnglish.Server.csproj", "{8FFF60EF-5D4E-4EF0-BE43-A0F8CD81991B}"
 EndProject
@@ -141,6 +141,9 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8FFF60EF-5D4E-4EF0-BE43-A0F8CD81991B} = {A5E5AAAF-BA0E-4149-9D71-EFEBEC62DD08}
+		{0CE11F15-805A-4DBD-9A79-203771E608D9} = {5118390D-3558-47FA-8B5A-38C4A4357F40}
+		{49B4F7A4-DB01-4DF9-AC0E-ABE2E72414F6} = {5118390D-3558-47FA-8B5A-38C4A4357F40}
+		{5627FFE0-D293-4BA2-8A33-586492E6D0E0} = {5118390D-3558-47FA-8B5A-38C4A4357F40}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0F48D2FC-9118-4DD7-A942-EFDBB12FD91E}
