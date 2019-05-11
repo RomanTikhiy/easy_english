@@ -20,40 +20,42 @@
     <ContentPage.Content>
         
         <RelativeLayout>
-        <StackLayout Margin="10">
+        <StackLayout>
                 <ListView
                       SelectedItem="{Binding SelectedWord, Mode=TwoWay}"
                       HasUnevenRows="True"
+                      SeparatorVisibility="None"
                       ItemsSource="{Binding Words}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <ViewCell.View>
-                                    <StackLayout>
-                                        <Label Text="{Binding Value}" FontSize="Large" />
-                                        <Label Text="{Binding Translation}" />
-                                        <Label Text="{Binding Description}" />
-                                    </StackLayout>
+                                    <Frame Margin="15,15,15,0" BackgroundColor="#967BB6" BorderColor="WhiteSmoke" CornerRadius="10">
+                                        <StackLayout>
+                                            <Label Text="{Binding Value}" FontSize="Large" TextColor="White" />
+                                            <Label Text="{Binding Translation}" TextColor="White"/>
+                                            <Label Text="{Binding Description}" TextColor="White"/>
+                                        </StackLayout>
+                                    </Frame>                                    
                                 </ViewCell.View>
 
                                 <ViewCell.ContextActions>
-                                    <MenuItem 
+                                    <MenuItem
                                         Icon="Trash"
                                         Command=
                                             "{Binding BindingContext.DeleteCommand, Source={x:Reference WordList}}" 
                                         CommandParameter="{Binding .}">
                                     </MenuItem>
                                 </ViewCell.ContextActions>
-
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
             <fab:FloatingActionButton 
-                Image="dark_plus1.png" WidthRequest="80" HeightRequest="85" ButtonColor="#90EE90" BorderColor="Black" Command="{Binding NewWordItemCommand}"
-                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-80}"
-				RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-80}" >
+                Image="plus.png" WidthRequest="100" HeightRequest="105" ButtonColor="#ff7fa7" BorderColor="White" BorderWidth="5" Command="{Binding NewWordItemCommand}"
+                RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=-100}"
+				RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1, Constant=-100}" >
             </fab:FloatingActionButton>
         </RelativeLayout>
     </ContentPage.Content>

@@ -1,15 +1,29 @@
-﻿using Prism.Commands;
+﻿using MobileClient.Models;
+using Prism.Commands;
 using Prism.Navigation;
 
 namespace MobileClient.ViewModels
 {
     public class MyMasterDetailPageViewModel : ViewModelBase
     {
-        public DelegateCommand<string> NavigateCommand { get; set; }
+        private MasterPageItem _selectedItem;
+        public MasterPageItem SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                if (value != null)
+                {
+                    SetProperty(ref _selectedItem, value);
+                    Navigate(value.NavigationPath);
+
+                    _selectedItem = null;
+                }
+            }
+        }        
 
         public MyMasterDetailPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-            NavigateCommand = new DelegateCommand<string>(Navigate);
         }
 
         private async void Navigate(string name)

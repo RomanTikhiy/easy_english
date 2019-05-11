@@ -1,12 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobileClient.Views.CameraTranslatePage">
+             x:Class="MobileClient.Views.CameraTranslatePage"
+             Title="Translate from camera">
     <ContentPage.Content>
         <StackLayout>
-            <Image  Margin="10" Source="{Binding CapturedImage}"></Image>
+            <StackLayout>
+                <Image  Margin="10" Source="{Binding CapturedImage}" HeightRequest="300" WidthRequest="300"></Image>
+            </StackLayout>
             <Button Margin="45, 10, 45, 10" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White" Command="{Binding TakePhotoCommand}" Text="Take photo"></Button>
-            <Editor Margin="45, 10, 45, 10" Placeholder="Text:" Text="{Binding TextResult}" VerticalOptions="FillAndExpand"></Editor>
+            <Frame Margin="45, 10, 45, 10" BorderColor="MediumPurple" CornerRadius="10" VerticalOptions="FillAndExpand">
+                <Editor Placeholder="Text:" Text="{Binding TextResult}"></Editor>
+            </Frame>
             <Button Margin="45, 10, 45, 10" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White" Command="{Binding TranslateCommand}" Text="Go to translate"></Button>
         </StackLayout>
     </ContentPage.Content>

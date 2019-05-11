@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             x:Class="MobileClient.Views.GrammarTestPage"
+             x:Name="carousel"
+             Title="Grammar">
+    <ContentPage>
+        <StackLayout Margin="10">
+            <Label Text="Translation" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
+            <Label Margin="0, 35" Text="'Чи бували ви колись у Лондоні ?'" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
+            <Frame CornerRadius="10" BorderColor="MediumPurple" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                <controls:BindableRadioGroup FontSize="22" Spacing="2">
+                    <controls:BindableRadioGroup.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>A: 'Do you was in London ?'</x:String>
+                            <x:String>B: 'Have you ever been in London ?'</x:String>
+                            <x:String>C: 'Were you was in London ?'</x:String>
+                            <x:String>D: 'Did you in London? '</x:String>
+                        </x:Array>
+                    </controls:BindableRadioGroup.ItemsSource>
+                </controls:BindableRadioGroup>
+            </Frame>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                <Button Text="Prev" Pressed="OnButtonPrevPressed" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White"></Button>
+                <Button Text="Next" Pressed="OnButtonNextPressed" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage>
+        <StackLayout Margin="10">
+            <Label Text="Complete the sentence" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
+            <Label Margin="0, 30" Text="'I ___ at the school yesterday.'" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
+            <Frame CornerRadius="10" BorderColor="MediumPurple" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                <controls:BindableRadioGroup FontSize="22" Spacing="2" >
+                    <controls:BindableRadioGroup.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>A: 'am'</x:String>
+                            <x:String>B: 'were'</x:String>
+                            <x:String>C: 'will be'</x:String>
+                            <x:String>D: 'was'</x:String>
+                        </x:Array>
+                    </controls:BindableRadioGroup.ItemsSource>
+                </controls:BindableRadioGroup>
+            </Frame>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                <Button Text="Prev" Pressed="OnButtonPrevPressed" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White"></Button>
+                <Button Text="Next" Pressed="OnButtonNextPressed" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage>
+        <StackLayout Margin="10">
+            <Label Text="Translation" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
+            <Label Margin="0, 30" Text="'Я вчився грати на гітарі протягом трьох років.'" FontSize="Medium" HorizontalOptions="Center" />
+            <Frame CornerRadius="10" BorderColor="MediumPurple" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                <controls:BindableRadioGroup FontSize="22" Spacing="2" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                    <controls:BindableRadioGroup.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>A: 'I have been learning to code for three years'</x:String>
+                            <x:String>B: 'I learn to code for three year'</x:String>
+                            <x:String>C: 'I am learning to code in three years'</x:String>
+                            <x:String>D: 'I was learning to code for a three years'</x:String>
+                        </x:Array>
+                    </controls:BindableRadioGroup.ItemsSource>
+                </controls:BindableRadioGroup>
+            </Frame>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                <Button Text="Prev" Pressed="OnButtonPrevPressed" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White"></Button>
+                <Button Text="Next" Pressed="OnButtonNextPressed" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White"></Button>
+            </StackLayout>
+            <Button Margin="45, 0, 45, 10" Text="Complete" Command="{Binding CompleteTestCommand}" CornerRadius="20" BackgroundColor="HotPink" TextColor="White"></Button>
+        </StackLayout>
+    </ContentPage>
+</CarouselPage>

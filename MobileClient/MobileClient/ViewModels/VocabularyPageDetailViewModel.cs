@@ -67,6 +67,13 @@ namespace MobileClient.ViewModels
                 Words = new ObservableCollection<WordItem>(vocabulary.WordItems);
             }
 
+            if (parameters.TryGetValue("EditVocabulary", out Vocabulary editedVocabulary))
+            {
+                _vocabulary.Name = editedVocabulary.Name;
+                _vocabulary.Description = editedVocabulary.Description;
+                Words = new ObservableCollection<WordItem>(editedVocabulary.WordItems);
+            }
+
             if (parameters.TryGetValue("EditWordItem", out WordItem editedWord))
             {
                 var word = Words.FirstOrDefault(x => x.Id == editedWord.Id);
@@ -92,7 +99,10 @@ namespace MobileClient.ViewModels
 
         private async Task EditVocabularyAsync()
         {
-            await NavigationService.NavigateAsync(nameof(EditVocabularyPage));
+            var parameters = new NavigationParameters();
+            parameters.Add("EditVocabulary", _vocabulary);
+
+            await NavigationService.NavigateAsync(nameof(EditVocabularyPage), parameters);
         }
 
         private void DeleteItem(WordItem item)

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileClient.Views.TestsPage"
+             Title="Tests">
+    <ContentPage.Content>
+        <Grid>
+
+            <Grid.RowDefinitions></Grid.RowDefinitions>
+            <Grid.RowDefinitions></Grid.RowDefinitions>
+            
+            <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
+
+            <StackLayout Margin="15" Grid.Column="0" Grid.Row="0">
+                <Frame BorderColor="WhiteSmoke" BackgroundColor="MediumPurple" CornerRadius="10">
+                    <Label Text="Grammar" TextColor="White" FontSize="Large"></Label>
+                </Frame>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GrammarTestCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

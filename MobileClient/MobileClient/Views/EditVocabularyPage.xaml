@@ -1,22 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MobileClient.Views.EditVocabularyPage">
+             x:Class="MobileClient.Views.EditVocabularyPage"
+             xmlns:local="clr-namespace:MobileClient.CustomControls"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             Title="Edit vocabulary">
     <ContentPage.Content>
         <StackLayout>
-            <Grid>
-                <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
-                <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions></Grid.RowDefinitions>
-                <Grid.RowDefinitions></Grid.RowDefinitions>
-
-                <Label Text="Name: " FontSize="Large"></Label>
-                <Editor Grid.Column="1"></Editor>
-
-                <Label Grid.Row="1" Text="Description: " FontSize="Large"></Label>
-                <Editor Grid.Column="1" Grid.Row="1"></Editor>
-            </Grid>
-        </StackLayout>
+            <TableView HasUnevenRows="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <TableRoot>
+                    <TableSection Title="Name">
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Margin="10">
+                                <Label Text="Name: " FontSize="Large"></Label>
+                                <Entry Text="{Binding Name}" Placeholder="Enter the name..." HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"></Entry>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Description">
+                        <ViewCell>
+                            <StackLayout Margin="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <Label Text="Description: " FontSize="Large"></Label>
+                                <Frame CornerRadius="10" HasShadow="True" BorderColor="MediumPurple">
+                                    <StackLayout>
+                                        <local:ExpandableEditor Text="{Binding Description}" Placeholder="Enter the description..."></local:ExpandableEditor>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Saving">
+                        <ViewCell>
+                            <Button 
+                                Margin="45, 10, 45, 10" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White" Command="{Binding SaveVocabularyCommand}" Text="Save">
+                            </Button>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>        
     </ContentPage.Content>
 </ContentPage>

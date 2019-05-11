@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:nav="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
+             xmlns:local="clr-namespace:MobileClient.Models"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="MobileClient.Views.MyMasterDetailPage"
              Title="Menu">
@@ -11,11 +12,28 @@
         <ContentPage Title="Menu" >
             <StackLayout>
                 <Image Margin="0, -55, 0, 10" Source="england.png"></Image>
-                <Button Margin="45, 20, 45, 5" Text="Profile" Command="{Binding NavigateCommand}" CommandParameter="NavigationPage/MainPage" CornerRadius="20"/>
-                <Button Margin="45, 10, 45, 5" Text="Tests" Command="{Binding NavigateCommand}" CommandParameter="NavigationPage/MainPage/VocabulariesPage" CornerRadius="20"/>
-                <Button Margin="45, 10, 45, 5" Text="Vocabularies" Command="{Binding NavigateCommand}" CommandParameter="NavigationPage/MainPage/VocabulariesPage" CornerRadius="20"/>
-                <Button Margin="45, 10, 45, 5" Text="Photo translator" Command="{Binding NavigateCommand}" CommandParameter="NavigationPage/MainPage/CameraTranslatePage" CornerRadius="20"/>
-                <Button Margin="45, 10, 45, 5" Text="Logout" Command="{Binding NavigateCommand}" CommandParameter="NavigationPage/MainPage/VocabulariesPage" CornerRadius="20"/>
+                <ListView SelectedItem="{Binding SelectedItem, Mode=TwoWay}" SeparatorVisibility="None" HasUnevenRows="True">
+                    
+                    <ListView.ItemsSource>
+                        <x:Array Type="{x:Type local:MasterPageItem}">
+                            <local:MasterPageItem Title="Profile" IconPath="icons/profile.png" NavigationPath="MyNavigationPage/MainPage"/>
+                            <local:MasterPageItem Title="Tests" IconPath="icons/test.png" NavigationPath="MyNavigationPage/MainPage/TestsPage" />
+                            <local:MasterPageItem Title="Vocabularies" IconPath="icons/dictionary.png" NavigationPath="MyNavigationPage/MainPage/VocabulariesPage"  />
+                            <local:MasterPageItem Title="Photo translator" IconPath="icons/camera_icon.png" NavigationPath="MyNavigationPage/MainPage/CameraTranslatePage"  />
+                            <local:MasterPageItem Title="Logout" IconPath="icons/logout.png" NavigationPath="MyNavigationPage/MainPage/VocabulariesPage"  />
+                        </x:Array>
+                    </ListView.ItemsSource>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Padding="5,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                    <Image Source="{Binding IconPath}" />
+                                    <Label Grid.Column="1" Text="{Binding Title}" FontSize="Medium"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

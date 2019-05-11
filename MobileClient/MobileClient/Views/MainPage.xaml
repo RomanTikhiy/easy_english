@@ -7,7 +7,6 @@
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
         <Label FontSize="Large" Text="Welcome to Easy English." HorizontalTextAlignment="Center"/>
         <Image Source="owl.png"></Image>
-        <Label FontSize="Large" Text="Learn English for free and enjoy." HorizontalTextAlignment="Center"/>
     </StackLayout>
 
 </ContentPage>

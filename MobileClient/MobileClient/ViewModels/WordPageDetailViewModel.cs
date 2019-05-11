@@ -3,12 +3,8 @@ using MobileClient.Infrastructure;
 using MobileClient.Models;
 using Prism.Commands;
 using Prism.Navigation;
-using System;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 using System.Windows.Input;
 
 namespace MobileClient.ViewModels

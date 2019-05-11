@@ -1,9 +1,12 @@
 ﻿using MobileClient.Infrastructure;
 using MobileClient.Models;
 using MobileClient.Views;
+using Prism.Commands;
 using Prism.Navigation;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace MobileClient.ViewModels
 {
@@ -29,10 +32,14 @@ namespace MobileClient.ViewModels
             }
         }
 
+        public ICommand AddVocabularyCommand { get; set; }
+
         public ObservableCollection<Vocabulary> Vocabularies { get; set; }
 
         public VocabulariesViewModel(INavigationService navigationService) : base(navigationService)
         {
+            AddVocabularyCommand = new DelegateCommand(OnAddingVocabulary);
+
             Vocabularies = new ObservableCollection<Vocabulary>()
             {
                 new Vocabulary()
@@ -61,6 +68,11 @@ namespace MobileClient.ViewModels
             };
         }
 
+        private async void OnAddingVocabulary()
+        {
+            await NavigationService.NavigateAsync("EditVocabularyPage");
+        }
+
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
             base.OnNavigatedFrom(parameters);
@@ -69,6 +81,11 @@ namespace MobileClient.ViewModels
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
+
+            if (parameters.TryGetValue("AddVocabulary", out Vocabulary vocabulary))
+            {
+                Vocabularies.Add(vocabulary);
+            }
         }
     }
 }
