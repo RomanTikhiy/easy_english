@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:local="clr-namespace:MobileClient.CustomControls"
+             x:Class="MobileClient.Views.LoginPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="FloralWhite">
+            <Frame Margin="20, 10, 20, 10" WidthRequest="400" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" CornerRadius="10" BackgroundColor="#967BB6">
+                <StackLayout>
+
+                    <Image Source="GB_flag.png" HorizontalOptions="CenterAndExpand"></Image>
+                    <Label Margin="0, 0, 0, 30" Text="Login page" TextColor="White" HorizontalOptions="CenterAndExpand" FontSize="Medium"></Label>
+
+                    <Frame CornerRadius="7" Margin="5, 0, 5, 5">
+                        <local:CustomEntry Placeholder="Username" PlaceholderColor="Gray" Text="{Binding Login}"></local:CustomEntry>
+                    </Frame>
+
+                    <Frame CornerRadius="7" Margin="5, 0, 5, 0">
+                        <StackLayout Orientation="Horizontal">
+                            <local:CustomEntry Placeholder="Password" HorizontalOptions="FillAndExpand" x:Name="password" PlaceholderColor="Gray" Text="{Binding Password}" IsPassword="true"></local:CustomEntry>
+                            <Image Source="hide_pass.png" x:Name="hidePassImage">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnShowPass"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                    </Frame>
+
+                    <StackLayout Margin="5, 20, 5, 0" Orientation="Horizontal">
+                        <Label Margin="5, 0, 0, 0" Text="Remember me:" FontSize="Medium" TextColor="White"></Label>
+                        <controls:CheckBox></controls:CheckBox>
+                    </StackLayout>
+
+                    <controls:ExtendedButton HeightRequest="70" Margin="5, 5, 5, 0" Text="Submit" FontSize="Medium" TextColor="White" BackgroundColor="#6666ff" CornerRadius="10" Command="{Binding LoginCommand}"></controls:ExtendedButton>
+
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -26,7 +26,8 @@ namespace MobileClient
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("MyMasterDetailPage/MyNavigationPage/MainPage");
+            //await NavigationService.NavigateAsync("MyMasterDetailPage/MyNavigationPage/MainPage");
+            await NavigationService.NavigateAsync("LoginPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry container)
@@ -43,7 +44,8 @@ namespace MobileClient
             container.RegisterForNavigation<CameraTranslatePage, CameraTranslateViewModel>();
             container.RegisterForNavigation<TranslatePage, TranslatePageViewModel>();
             container.RegisterForNavigation<TestsPage, TestsViewModel>();
-            container.RegisterForNavigation<GrammarTestPage, GrammarTestViewModel>();            
+            container.RegisterForNavigation<GrammarTestPage, GrammarTestViewModel>();
+            container.RegisterForNavigation<LoginPage, LoginPageViewModel>();
         }
     }
 }

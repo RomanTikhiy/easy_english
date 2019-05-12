@@ -20,7 +20,7 @@
                             <local:MasterPageItem Title="Tests" IconPath="icons/test.png" NavigationPath="MyNavigationPage/MainPage/TestsPage" />
                             <local:MasterPageItem Title="Vocabularies" IconPath="icons/dictionary.png" NavigationPath="MyNavigationPage/MainPage/VocabulariesPage"  />
                             <local:MasterPageItem Title="Photo translator" IconPath="icons/camera_icon.png" NavigationPath="MyNavigationPage/MainPage/CameraTranslatePage"  />
-                            <local:MasterPageItem Title="Logout" IconPath="icons/logout.png" NavigationPath="MyNavigationPage/MainPage/VocabulariesPage"  />
+                            <local:MasterPageItem Title="Logout" IconPath="icons/logout.png" NavigationPath="/LoginPage"  />
                         </x:Array>
                     </ListView.ItemsSource>
                     <ListView.ItemTemplate>
