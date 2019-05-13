@@ -35,12 +35,28 @@ namespace MobileClient.ViewModels
             set { SetProperty(ref _textResult, value); }
         }
 
+        private float _progress;
+        public float Progress
+        {
+            get { return _progress; }
+            set { SetProperty(ref _progress, value); }
+        }
+
+        private bool _isProcessing;
+        public bool IsProcessing
+        {
+            get { return _isProcessing; }
+            set { SetProperty(ref _isProcessing, value); }
+        }
+
         public CameraTranslateViewModel(INavigationService navigationService) : base(navigationService)
         {
             _device = Resolver.Resolve<IDevice>();
             _tesseractApi = Resolver.Resolve<ITesseractApi>();
 
             CapturedImage = ImageSource.FromFile("camera.gif");
+
+            _tesseractApi.Progress += OnProgressChanged;
 
             TakePhotoCommand = new DelegateCommand(async () => await TakePhotoAsync());
             TranslateCommand = new DelegateCommand(async () => 
@@ -64,12 +80,16 @@ namespace MobileClient.ViewModels
 
         async Task TakePhotoAsync()
         {
+            Progress = 0;
+
             if (!_tesseractApi.Initialized)
                 await _tesseractApi.Init("eng");
 
             var photo = await TakePicture();
             if (photo != null)
             {
+                IsProcessing = true;
+
                 // When setting an ImageSource using a stream, 
                 // the stream gets closed, so to avoid that I backed up
                 // the image into a byte array with the following code:
@@ -83,10 +103,17 @@ namespace MobileClient.ViewModels
                 var tessResult = await _tesseractApi.SetImage(photo.Path);
                 if (tessResult)
                 {
+                    IsProcessing = false;
+
                     TextResult = _tesseractApi.Text;
                     var r = _tesseractApi.Results(PageIteratorLevel.Word);
                 }
             }            
+        }
+
+        private void OnProgressChanged(object sender, ProgressEventArgs e)
+        {
+            Progress += 0.1f;
         }
 
         private async Task<MediaFile> TakePicture()

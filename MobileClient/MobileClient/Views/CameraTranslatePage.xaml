@@ -12,6 +12,8 @@
             <Frame Margin="45, 10, 45, 10" BorderColor="MediumPurple" CornerRadius="10" VerticalOptions="FillAndExpand">
                 <Editor Placeholder="Text:" Text="{Binding TextResult}"></Editor>
             </Frame>
+            <ActivityIndicator IsRunning="{Binding IsProcessing}"></ActivityIndicator>
+            <!--<ProgressBar Progress="{Binding Progress}"></ProgressBar>-->
             <Button Margin="45, 10, 45, 10" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White" Command="{Binding TranslateCommand}" Text="Go to translate"></Button>
         </StackLayout>
     </ContentPage.Content>
