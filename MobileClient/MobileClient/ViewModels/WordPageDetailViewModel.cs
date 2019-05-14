@@ -3,9 +3,11 @@ using MobileClient.Infrastructure;
 using MobileClient.Models;
 using Prism.Commands;
 using Prism.Navigation;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace MobileClient.ViewModels
 {
@@ -55,11 +57,18 @@ namespace MobileClient.ViewModels
 
         public ICommand TranslateCommand { get; set; }
 
+        public ICommand TextToSpeechCommand { get; set; }
+
+        public ICommand ResultTextToSpeechCommand { get; set; }
+
         public WordPageDetailViewModel(INavigationService navigationService, ITranslator translator) : base(navigationService)
         {
             _translator = translator;
 
             Languages = new[] { Constants.Ukrainian, Constants.English };
+
+            TextToSpeechCommand = new DelegateCommand(OnTextToSpeech);
+            ResultTextToSpeechCommand = new DelegateCommand(OnResultTextToSpeech);
 
             TranslateCommand = new DelegateCommand(async () => 
             {
@@ -68,10 +77,20 @@ namespace MobileClient.ViewModels
 
                 var result = await _translator.TranslateAsync(fromLanguage, toLanguage, Value);
 
-                Translation = $"Translation: {result}";
+                Translation = result;
             });
 
             SaveCommand = new DelegateCommand(async () => await SaveItemAsync());
+        }
+
+        private void OnResultTextToSpeech()
+        {
+            DependencyService.Get<ITextToSpeech>().Speak(Translation, LanguageToString.StartsWith("Uk") ? "uk-UA" : "en-US");
+        }
+
+        private void OnTextToSpeech()
+        {
+            DependencyService.Get<ITextToSpeech>().Speak(Value, LanguageFromString.StartsWith("Uk") ? "uk-UA": "en-US");
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)

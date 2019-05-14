@@ -2,21 +2,52 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileClient.Views.WordPageDetail"
+             xmlns:local="clr-namespace:MobileClient.CustomControls"
              Title="Edit word item">
     <ContentPage.Content>
-        <StackLayout Margin="45, 10, 45, 10">
+        <StackLayout Margin="10" VerticalOptions="FillAndExpand">
 
-            <Editor Placeholder="Text:" Grid.Row="0" Grid.Column="1" Text="{Binding Value}"></Editor>
+            <Frame BorderColor="MediumPurple" CornerRadius="10">
+                <StackLayout HorizontalOptions="FillAndExpand">
+                    
+                    <local:ExpandableEditor Placeholder="Text:" Grid.Row="0" Grid.Column="1" Text="{Binding Value}" HorizontalOptions="FillAndExpand"></local:ExpandableEditor>
 
-            <Picker Title="Translate from:" ItemsSource="{Binding Languages}" SelectedItem="{Binding LanguageFromString}"></Picker>
+                    <Picker Title="Translate from:" ItemsSource="{Binding Languages}" SelectedItem="{Binding LanguageFromString}"></Picker>
 
-            <Picker Title="Translate to:" ItemsSource="{Binding Languages}" SelectedItem="{Binding LanguageToString}"></Picker>
+                    <Image Source="voice.png">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TextToSpeechCommand}">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+            </Frame>
 
-            <Button Text="Translate" Command="{Binding TranslateCommand}" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White"></Button>
+            <Button Margin="10" Text="Translate" Command="{Binding TranslateCommand}" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White"></Button>
 
-            <Button Text="Save" Command="{Binding SaveCommand}" CornerRadius="20" BackgroundColor="#20B2AA" TextColor="White"></Button>
+            <Frame BorderColor="MediumPurple" CornerRadius="10">
+                <StackLayout HorizontalOptions="FillAndExpand">
+                    <Picker Title="Translate to:" ItemsSource="{Binding Languages}" SelectedItem="{Binding LanguageToString}"></Picker>
 
-            <Label FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" Text="{Binding Translation}"></Label>
+                    <Frame BorderColor="LightGray" CornerRadius="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Label FontSize="Medium" Text="Translation: " TextColor="Black" ></Label>
+                            
+                            <Label FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" Text="{Binding Translation}"></Label>
+                        </StackLayout>
+                        
+                    </Frame>
+
+                    <Image Source="voice.png">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ResultTextToSpeechCommand}">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+            </Frame>
+
+            <Button Margin="10" Text="Save" Command="{Binding SaveCommand}" CornerRadius="20" BackgroundColor="#20B2AA" TextColor="White"></Button>
 
         </StackLayout>
     </ContentPage.Content>

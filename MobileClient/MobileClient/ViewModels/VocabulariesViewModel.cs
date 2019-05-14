@@ -57,7 +57,7 @@ namespace MobileClient.ViewModels
                         {
                             Id = WordItem.NextId++,
                             Value = "Автомобіль",
-                            Translation = "Translation: Car",
+                            Translation = "Car",
                             LanguageFrom = Constants.Ukrainian,
                             LanguageTo = Constants.English,
                             Description = $"Source: {Constants.Ukrainian}, target: {Constants.English}"
