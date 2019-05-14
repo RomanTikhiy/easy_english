@@ -8,13 +8,13 @@
             <StackLayout>
                 <Image  Margin="10" Source="{Binding CapturedImage}" HeightRequest="300" WidthRequest="300"></Image>
             </StackLayout>
-            <Button Margin="45, 10, 45, 10" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White" Command="{Binding TakePhotoCommand}" Text="Take photo"></Button>
+            <Button Margin="45, 10, 45, 10" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White" Command="{Binding TakePhotoCommand}" Text="Take photo" IsEnabled="{Binding IsControlEnabled}"></Button>
             <Frame Margin="45, 10, 45, 10" BorderColor="MediumPurple" CornerRadius="10" VerticalOptions="FillAndExpand">
-                <Editor Placeholder="Text:" Text="{Binding TextResult}"></Editor>
+                <Editor Placeholder="Text:" Text="{Binding TextResult}" IsEnabled="{Binding IsControlEnabled}"></Editor>
             </Frame>
-            <ActivityIndicator IsRunning="{Binding IsProcessing}"></ActivityIndicator>
+            <ActivityIndicator IsRunning="{Binding IsProcessing}" IsVisible="{Binding IsProcessing}" Color="MediumPurple"></ActivityIndicator>
             <!--<ProgressBar Progress="{Binding Progress}"></ProgressBar>-->
-            <Button Margin="45, 10, 45, 10" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White" Command="{Binding TranslateCommand}" Text="Go to translate"></Button>
+            <Button Margin="45, 10, 45, 10" CornerRadius="20" BackgroundColor="#6666ff" TextColor="White" Command="{Binding TranslateCommand}" Text="Go to translate" IsEnabled="{Binding IsControlEnabled}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

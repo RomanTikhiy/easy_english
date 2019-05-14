@@ -49,6 +49,13 @@ namespace MobileClient.ViewModels
             set { SetProperty(ref _isProcessing, value); }
         }
 
+        private bool _isControlEnabled;
+        public bool IsControlEnabled
+        {
+            get { return _isControlEnabled; }
+            set { SetProperty(ref _isControlEnabled, value); }
+        }
+
         public CameraTranslateViewModel(INavigationService navigationService) : base(navigationService)
         {
             _device = Resolver.Resolve<IDevice>();
@@ -56,14 +63,13 @@ namespace MobileClient.ViewModels
 
             CapturedImage = ImageSource.FromFile("camera.gif");
 
-            _tesseractApi.Progress += OnProgressChanged;
-
+            IsControlEnabled = true;
             TakePhotoCommand = new DelegateCommand(async () => await TakePhotoAsync());
             TranslateCommand = new DelegateCommand(async () => 
             {
                 var parameters = new NavigationParameters();
                 parameters.Add("text", TextResult);
-
+                
                 await NavigationService.NavigateAsync($"{nameof(TranslatePage)}", parameters);
             });
         }
@@ -89,6 +95,7 @@ namespace MobileClient.ViewModels
             if (photo != null)
             {
                 IsProcessing = true;
+                IsControlEnabled = false;
 
                 // When setting an ImageSource using a stream, 
                 // the stream gets closed, so to avoid that I backed up
@@ -99,6 +106,7 @@ namespace MobileClient.ViewModels
                 //photo.Position = 0;
 
                 CapturedImage = ImageSource.FromStream(() => photo.GetStream());
+                _tesseractApi.Progress += OnProgressChanged;
 
                 var tessResult = await _tesseractApi.SetImage(photo.Path);
                 if (tessResult)
@@ -108,6 +116,8 @@ namespace MobileClient.ViewModels
                     TextResult = _tesseractApi.Text;
                     var r = _tesseractApi.Results(PageIteratorLevel.Word);
                 }
+
+                IsControlEnabled = true;
             }            
         }
 
