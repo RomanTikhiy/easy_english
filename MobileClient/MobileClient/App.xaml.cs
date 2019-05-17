@@ -46,6 +46,7 @@ namespace MobileClient
             container.RegisterForNavigation<TestsPage, TestsViewModel>();
             container.RegisterForNavigation<GrammarTestPage, GrammarTestViewModel>();
             container.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            container.RegisterForNavigation<GrammarTestResultsPage, GrammarTestResultsViewModel>();
         }
     }
 }

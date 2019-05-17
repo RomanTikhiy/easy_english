@@ -10,7 +10,7 @@
             <Label Text="Translation" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
             <Label Margin="0, 35" Text="'Чи бували ви колись у Лондоні ?'" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
             <Frame CornerRadius="10" BorderColor="MediumPurple" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
-                <controls:BindableRadioGroup FontSize="22" Spacing="2">
+                <controls:BindableRadioGroup FontSize="22" Spacing="2" SelectedIndex="{Binding Q1SelectedItem}">
                     <controls:BindableRadioGroup.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>A: 'Do you was in London ?'</x:String>
@@ -32,7 +32,7 @@
             <Label Text="Complete the sentence" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
             <Label Margin="0, 30" Text="'I ___ at the school yesterday.'" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
             <Frame CornerRadius="10" BorderColor="MediumPurple" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
-                <controls:BindableRadioGroup FontSize="22" Spacing="2" >
+                <controls:BindableRadioGroup FontSize="22" Spacing="2" SelectedIndex="{Binding Q2SelectedItem}">
                     <controls:BindableRadioGroup.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>A: 'am'</x:String>
@@ -54,13 +54,13 @@
             <Label Text="Translation" FontSize="Medium" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
             <Label Margin="0, 30" Text="'Я вчився грати на гітарі протягом трьох років.'" FontSize="Medium" HorizontalOptions="Center" />
             <Frame CornerRadius="10" BorderColor="MediumPurple" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
-                <controls:BindableRadioGroup FontSize="22" Spacing="2" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                <controls:BindableRadioGroup FontSize="22" Spacing="2" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" SelectedIndex="{Binding Q3SelectedItem}">
                     <controls:BindableRadioGroup.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
-                            <x:String>A: 'I have been learning to code for three years'</x:String>
-                            <x:String>B: 'I learn to code for three year'</x:String>
-                            <x:String>C: 'I am learning to code in three years'</x:String>
-                            <x:String>D: 'I was learning to code for a three years'</x:String>
+                            <x:String>A: 'I was learning the guitar for three years'</x:String>
+                            <x:String>B: 'I learned the guitar for three years'</x:String>
+                            <x:String>C: 'I have been learning the guitar for three years'</x:String>
+                            <x:String>D: 'I am learning the guitar for three years'</x:String>
                         </x:Array>
                     </controls:BindableRadioGroup.ItemsSource>
                 </controls:BindableRadioGroup>
