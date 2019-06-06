@@ -97,14 +97,6 @@ namespace MobileClient.ViewModels
                 IsProcessing = true;
                 IsControlEnabled = false;
 
-                // When setting an ImageSource using a stream, 
-                // the stream gets closed, so to avoid that I backed up
-                // the image into a byte array with the following code:
-                //var imageBytes = new byte[photo.Length];
-                //photo.Position = 0;
-                //await photo.ReadAsync(imageBytes, 0, (int)photo.Length);
-                //photo.Position = 0;
-
                 CapturedImage = ImageSource.FromStream(() => photo.GetStream());
                 _tesseractApi.Progress += OnProgressChanged;
 
@@ -114,7 +106,6 @@ namespace MobileClient.ViewModels
                     IsProcessing = false;
 
                     TextResult = _tesseractApi.Text;
-                    var r = _tesseractApi.Results(PageIteratorLevel.Word);
                 }
 
                 IsControlEnabled = true;

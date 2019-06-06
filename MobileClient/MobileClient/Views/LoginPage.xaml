@@ -31,9 +31,7 @@
                         <Label Margin="5, 0, 0, 0" Text="Remember me:" FontSize="Medium" TextColor="White"></Label>
                         <controls:CheckBox></controls:CheckBox>
                     </StackLayout>
-
                     <controls:ExtendedButton HeightRequest="70" Margin="5, 5, 5, 0" Text="Submit" FontSize="Medium" TextColor="White" BackgroundColor="#6666ff" CornerRadius="10" Command="{Binding LoginCommand}"></controls:ExtendedButton>
-
                 </StackLayout>
             </Frame>
         </StackLayout>
